@@ -43,9 +43,8 @@ class Box:
 
 box = Box(100) 
 box.weight = - 10
-
  
-
+print('ass')
 
 
 
