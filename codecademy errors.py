@@ -67,3 +67,72 @@ print_instrument_price('Piano')
 
 
 
+
+#codecademy 25/02/2022
+# Try / except
+
+staff = {
+  'Austin': {
+    'floor managers': 1,
+    'sales associates': 5
+  },
+  'Melbourne': {
+    'floor managers': 0,
+    'sales associates': 8
+  },
+  'Beijing': {
+    'floor managers': 2,
+    'sales associates': 5
+  },
+}
+
+def print_staff_report(location, staff_dict):
+  managers = staff_dict['floor managers']
+  sales_people = staff_dict['sales associates']
+  ratio = sales_people / managers
+  print('Instrument World ' + location + ' has:')
+  print(str(sales_people) + ' sales employees')
+  print(str(managers) + ' floor managers')
+  print('The ratio of sales people to managers is ' + str(ratio))
+  print()
+
+for location, staff in staff.items():
+  try:
+      print_staff_report(location, staff)
+  # Write your code below:
+  
+  except ZeroDivisionError as e:
+      print('Could not print sales report for ' + location)
+      print(e)
+
+
+# lesson 6/11
+
+
+instrument_prices = {
+  'Banjo': 200,
+  'Cello': 1000,
+  'Flute': 100,
+}
+
+def display_discounted_price(instrument, discount):
+  full_price = instrument_prices[instrument]
+  discount_percentage = discount / 100
+  discounted_price = full_price - (full_price * discount_percentage)
+  print("The instrument's discounted price is: " + str(discounted_price))
+
+instrument = 'Banjo'
+discount = '20'
+
+# Write your code below:
+try:
+  display_discounted_price(instrument, discount)
+except KeyError:
+  print('An invalid instrument was entered!')
+except TypeError:
+  print('Discount percentage must be a number!')
+except Exception:
+  print('Hit an exception other than KeyError or TypeError!') 
+
+
+
