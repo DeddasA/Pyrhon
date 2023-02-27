@@ -195,4 +195,31 @@ finally:
   database.disconnect_from_database()
 
 
+inventory = {
+  'Piano': 3,
+  'Lute': 1,
+  'Sitar': 2
+}
+
+# lesson 9/11
+#Write your code below (Checkpoint 2):
+
+def submit_order(instrument, quantity):
+  supply = inventory[instrument]
+  
+  # Write your code below (Checkpoint 3 & 4): 
+  inventory[instrument] -= quantity
+  print('Successfully placed order! Remaining supply: ' + str(inventory[instrument]))
+  if quantity > supply:
+    raise  InventoryError
+  else:
+     print('Successfully placed order! Remaining supply: ' + str(inventory[instrument]))
+
+
+instrument = 'Piano'
+quantity = 1
+submit_order(instrument, quantity)
+
+class InventoryError(Exception):
+  pass
 
