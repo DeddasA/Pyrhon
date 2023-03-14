@@ -1,0 +1,75 @@
+guests = {}
+
+def read_guestlist(file_name):
+    with open(file_name, 'r') as text_file:
+        for line in text_file:
+            line_data = line.strip().split(",")
+            yield line_data
+
+def fixer(func):
+    for line_data in func:
+        name = line_data[0]
+        age = int(line_data[1])
+        guests[name] = age
+        new_name = yield name + ' ' + str(age)
+        if new_name is not None:
+          guests[new_name[0]] =new_name[1]
+
+generator = read_guestlist('guest_list.txt')
+generator_1 = fixer(generator)
+next(generator_1)
+
+generator_1.send(('Jane',35))
+for g in generator_1:
+    pass
+
+def checker(dct):
+    for name, age in dct.items():
+        if age >= 21:
+            yield name
+generator_2 = checker(guests)
+# for g in generator_2:
+#     print(g)
+
+def food_name(guests, start_food=None):
+    for name, age in guests.items():
+        guests[name] = [age, start_food, None]
+    while True:
+        for name, food in guests.items():
+            new_food = yield name, food  
+            if new_food is not None:
+                guests[name][1] = new_food
+
+
+def assign_table(guests, start_table=None):
+    for name, age in guests.items():
+        guests[name] = [age, start_table]
+    while True:
+        for name, table in guests.items():
+            new_table = yield name, table
+            if new_table is not None:
+                guests[name][0][2] = new_table  
+
+       
+
+
+
+generator_food = food_name(guests)
+generator_table = assign_table(guests)
+
+for i, (name, food) in enumerate(generator_food):
+    print(name, food)
+    new_food = 'Fish' #input(f'what does {name} want?' )
+    generator_food.send(new_food)
+    
+    if i == len(guests) - 1:
+        break
+print('   ')    
+for i, (name, table) in enumerate(generator_table):
+    print(name, table)
+    new_table = 3  #input(f'what table does {name} want?' )
+    generator_table.send(new_table)
+    
+    if i == len(guests) - 1:
+        break
+print(guests)
