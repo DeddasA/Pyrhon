@@ -30,9 +30,10 @@ class temp_checker:
             count+=1
             med = sum(list_01) / len(list_01)
             for n in list_01:
-                dvp1 = n - med 
-                dvp2 = (dvp1)**2/len(list_01)
-                dvp_final = dvp2 **0.5
+                dvp_sum = sum((n - med) ** 2 for n in list_01) 
+                dvp_final = (dvp_sum / len(list_01)) **0.5
+            
+                
            
             yield f'A media {count} é {med} e o desvio padrão é {dvp_final:.2f}'
             
