@@ -107,3 +107,23 @@ for key,value in song_data.items():
                     recommended_song_1[key] = tag
 print(recommended_song_1)
     
+    
+    
+    user_song_history = {'Retro Words': ['pop', 'warm', 'happy', 'electronic', 'synth'],
+                     'Stomping Cue': ['country', 'fiddle', 'party'],
+                     'Back To Art': ['pop', 'sad', 'emotional', 'relationship'],
+                     'Double Lights': ['electronic', 'chill', 'relaxing', 'piano', 'synth']}
+
+friend_song_history = {'Lowkey Space': ['electronic', 'dance', 'synth', 'upbeat'],
+                     'Blinding Era': ['rap', 'intense', 'moving', 'fast'],
+                     'Wait For Limit': ['rap', 'upbeat', 'romance', 'relationship'],
+                     'Double Lights': ['electronic', 'chill', 'relaxing', 'piano', 'synth']}
+                     
+
+for key, value in user_song_history.items():
+    new_set = set(user_song_history[key])
+
+
+    
+    user_tags = set(new_set)
+print(user_tags)
