@@ -127,3 +127,70 @@ for key, value in user_song_history.items():
     
     user_tags = set(new_set)
 print(user_tags)
+# user_song_history = {'Retro Words': ['pop', 'warm', 'happy', 'electronic', 'synth'],
+#                      'Stomping Cue': ['country', 'fiddle', 'party'],
+#                      'Back To Art': ['pop', 'sad', 'emotional', 'relationship'],
+#                      'Double Lights': ['electronic', 'chill', 'relaxing', 'piano', 'synth']}
+
+# friend_song_history = {'Lowkey Space': ['electronic', 'dance', 'synth', 'upbeat'],
+#                      'Blinding Era': ['rap', 'intense', 'moving', 'fast'],
+#                      'Wait For Limit': ['rap', 'upbeat', 'romance', 'relationship'],
+#                      'Double Lights': ['electronic', 'chill', 'relaxing', 'piano', 'synth']}
+
+# Write your code below!
+# user_tags = set(user_song_history)
+# diff = set()
+# for key, value in user_song_history.items():
+#     diff |= set(value)
+#     diff -= user_tags
+# print(diff)
+
+#or
+# user_tags = set()
+# for key, value in user_song_history.items():
+#     user_tags.update(set(value))
+
+
+# friend_tags = set()
+# for key, value in friend_song_history.items():
+#     friend_tags.update(set(value))
+
+
+# unique_tags = user_tags ^ friend_tags
+
+
+# print(unique_tags)
+
+
+music_tags = {'pop', 'warm', 'happy', 'electronic', 'synth', 'dance', 'upbeat'}
+
+# Write your code below!
+tags = {'pop', 'electronic', 'relaxing', 'slow', 'synth'}
+my_tags = frozenset(tags)
+
+frozen_tag_union =frozenset(music_tags | tags)
+
+regular_tag_intersect = set(music_tags & tags)
+frozen_tag_difference = frozenset(my_tags - music_tags)
+
+print(regular_tag_intersect)
+print(frozen_tag_difference)
+print(frozen_tag_union)
+
+regular_tag_sd = music_tags ^ my_tags
+print(regular_tag_sd)
+
+
+
+
+# Write your code below!
+company_name = "Killer look"
+company_location = (15,25)
+company_products = ['Banana','Sugar',"Leather sofa", 'Coffer', 'Sugarless sugar']
+company_data = {}
+
+
+for product in company_products:
+    for lat_len in company_location:
+        company_data[product] = lat_len
+print(company_data)
