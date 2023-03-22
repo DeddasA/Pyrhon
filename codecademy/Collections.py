@@ -119,7 +119,127 @@ for item in updated_products:
 print(site_locations)
 
 
+# from collections import OrderedDict
 
+
+# order_data = [['Order: 1', 'purchased'],
+#               ['Order: 2', 'purchased'],
+#               ['Order: 3', 'purchased'],
+#               ['Order: 4', 'returned'],
+#               ['Order: 5', 'purchased'],
+#               ['Order: 6', 'canceled'],
+#               ['Order: 7', 'returned'],
+#               ['Order: 8', 'purchased'],
+#               ['Order: 9', 'returned'],
+#               ['Order: 10', 'canceled'],
+#               ['Order: 11', 'purchased'],
+#               ['Order: 12', 'returned'],
+#               ['Order: 13', 'purchased'],
+#               ['Order: 14', 'canceled'],
+#               ['Order: 15', 'purchased']]
+
+# # Write your code below!
+# orders = OrderedDict(order_data)
+# to_move =[]
+# to_remove = []
+# for lst in order_data:
+#     for value in lst:
+#         if value == 'returned':
+#             to_move.append(lst[0])
+#         if value == 'canceled':
+#             to_remove.append(lst[0])
+# print(to_move)
+# print(to_remove)
+# for item in to_remove:
+#     for item_1 in to_move:
+#         if item in orders:
+#             orders.pop(item)
+#         if item_1 in orders:
+#             orders.move_to_end(item_1)
+# print(orders)
+print('   ')
+
+
+
+year_profit_data = [
+    {'jan_profit': 15492.30, 'jan_holiday_profit': 2589.12},
+    {'feb_profit': 17018.05, 'feb_holiday_profit': 3701.88},
+    {'mar_profit': 11849.13},
+    {'apr_profit': 9870.68},
+    {'may_profit': 13662.34},
+    {'jun_profit': 12903.54},
+    {'jul_profit': 16965.08, 'jul_holiday_profit': 4360.21},
+    {'aug_profit': 17685.69},
+    {'sep_profit': 9815.57},
+    {'oct_profit': 10318.28},
+    {'nov_profit': 23295.43, 'nov_holiday_profit': 9896.55},
+    {'dec_profit': 21920.19, 'dec_holiday_profit': 8060.79}
+]
+
+new_months_data = [
+    {'jan_profit': 13977.85, 'jan_holiday_profit': 2176.43},
+    {'feb_profit': 16692.15, 'feb_holiday_profit': 3239.74},
+    {'mar_profit': 17524.35, 'mar_holiday_profit': 4301.92}
+]
+
+# Write your code below!
+
+from collections import ChainMap
+
+profit_map = ChainMap(*year_profit_data)
+update = profit_map.new_child(new_months_data)
+
+last_year_standart_profits= 0.0
+last_year_holiday_profits = 0.0
+def get_profits(data):
+    global last_year_standart_profits,last_year_holiday_profits
+    for key, value in data.items():
+        if 'holiday' not in key:
+            last_year_standart_profits += value
+          
+        else:
+            last_year_holiday_profits += value
+           
+            
+    print(f'The standart month profit is {last_year_standart_profits:.2f}.')
+    print(f'The holiday month profit is {last_year_holiday_profits}.')
+    
+get_profits(profit_map)
+current_year_standart =0 
+current_year_holiday = 0
+def get_profits_2(data):
+    global current_year_standart,current_year_holiday
+    for key, value in data.items():
+        if 'holiday' not in key:
+            current_year_standart+= value
+          
+        else:
+            current_year_holiday += value
+           
+            
+    print(f'The current standart month profit is {current_year_standart:.2f}.')
+    print(f'The current holiday month profit is {current_year_holiday}.')
+             
+        
+
+
+for item in new_months_data:
+    profit_map_updated = profit_map.new_child(item)
+    
+get_profits_2(profit_map_updated)
+        
+def difference():
+    diff_standart = current_year_standart - last_year_standart_profits
+    diff_holiday = current_year_holiday - last_year_holiday_profits
+    print(f'{diff_standart:.2f}')
+    print(f'{diff_holiday:.2f}')
+difference()
+    
+    
+    
+
+
+  
 
    
 
