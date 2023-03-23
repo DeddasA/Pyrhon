@@ -235,7 +235,34 @@ def difference():
     print(f'{diff_holiday:.2f}')
 difference()
     
-    
+#user dicts
+
+
+from collections import UserDict
+
+
+
+data = {'order_4829': {'type': 't-shirt', 'size': 'large', 'price': 9.99, 'order_status': 'processing'},
+        'order_6184': {'type': 'pants', 'size': 'medium', 'price': 14.99, 'order_status': 'complete'},
+        'order_2905': {'type': 'shoes', 'size': 12, 'price': 22.50, 'order_status': 'complete'},
+        'order_7378': {'type': 'jacket', 'size': 'large', 'price': 24.99, 'order_status': 'processing'}}
+
+
+
+class OrderProcessingDict(UserDict):
+  def __init__(self,status,data_full):
+    self.status = status
+    self.data = data_full
+
+  def clear_orders(self):
+    data_copy = data.copy()
+    # if self.status == self.values():
+    for key,values in self.items():
+        if self.status in values.values():
+            del data_copy[key]
+    print(data_copy)
+        
+
     
 
 
